@@ -79,7 +79,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/ua-snap/FBP.git", :commit => "5d1565b17fb9d90aba8b7d53d5c970c452da367b" }
+  spec.source       = { :git => "https://github.com/ua-snap/FBP.git" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
