@@ -1,3 +1,3 @@
-# FBP
+# Fire Behavior Prediction Algorithm
 
-A description of this package.
+This is the FBP and all that.
