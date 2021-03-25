@@ -847,7 +847,7 @@ public class FBPAlgorithm {
         }
     }
     
-    public func sequence_calculate(_ inputs: InputSet, _ mains: MainOutput, _ secs: SecondaryOutput, _ heads: FireOutput, _ flanks: FireOutput, _ backs: FireOutput) {
+    public func sequence_calculate(_ inputs: InputSet, _ mains: MainOutput, _ secs: SecondaryOutput, _ heads: FireOutput, _ flanks: FireOutput, _ backs: FireOutput) -> (InputSet, MainOutput, SecondaryOutput, FireOutput, FireOutput, FireOutput) {
         
         inputs.waz = inputs.wdir + 180
         if (inputs.waz >= 360) {
@@ -927,5 +927,6 @@ public class FBPAlgorithm {
         let accn = acceleration(inputs, heads.cfb)
         secs.lbt = (secs.lb - 1.0) * (1.0 - exp(-accn * inputs.time)) + 1.0
     
+        return (inputs, mains, secs, heads, flanks, backs)
     }
 }
