@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "FBP"
-  spec.version      = "0.0.4"
+  spec.version      = "0.0.5"
   spec.summary      = "A Swift CocoaPods library with the FBP algorithm."
 
   # This description is used to generate tags and improve search results.
@@ -24,7 +24,7 @@ Pod::Spec.new do |spec|
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
-  spec.description  = "A Swift CocoaPods library with the FBP algorithm." 
+  spec.description  = "A Swift CocoaPods library with the FBP algorithm. Just trying to get this to work" 
 
   spec.homepage     = "https://github.com/ua-snap/FBP"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
@@ -61,8 +61,10 @@ Pod::Spec.new do |spec|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
+  spec.swift_versions = "5.3"
+
   # spec.platform     = :ios
-  # spec.platform     = :ios, "5.0"
+   spec.platform     = :ios, "10.0"
 
   #  When using multiple platforms
   # spec.ios.deployment_target = "5.0"
@@ -77,7 +79,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/ua-snap/FBP.git", :tag => "0.0.4" }
+  spec.source       = { :git => "https://github.com/ua-snap/FBP.git", :tag => "0.0.5" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
