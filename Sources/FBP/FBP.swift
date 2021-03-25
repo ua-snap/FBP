@@ -218,7 +218,7 @@ public class FBPAlgorithm {
         sequence_calculate(input, mains, secs, heads, flanks, backs)
     }
     
-    func conversions(_ value: Double, _ conversion: String) -> Double {
+    public func conversions(_ value: Double, _ conversion: String) -> Double {
         if (conversion == "mi2km") { return value * 1.60934 }
         if (conversion == "km2mi") { return value / 1.60934 }
         if (conversion == "km2ch") { return value * 49.7097 }
@@ -231,13 +231,13 @@ public class FBPAlgorithm {
     }
     
     // DONE
-    func ffmc_effect(_ ffmc: Double) -> Double {
+    public func ffmc_effect(_ ffmc: Double) -> Double {
         let mc: Double = 147.2 * (101.0 - ffmc) / (59.5 + ffmc)
         
         return 91.9 * exp(-0.1386 * mc) * (1 + pow(mc, 5.31) / 49300000.0)
     }
     
-    func rate_of_spread(_ inputs: InputSet, _ fuels: Dictionary<String, Any>, _ mains: MainOutput) -> Double {
+    public func rate_of_spread(_ inputs: InputSet, _ fuels: Dictionary<String, Any>, _ mains: MainOutput) -> Double {
         var fw: Double
         var rsi: Double
         mains.ff = ffmc_effect(inputs.ffmc)
@@ -261,7 +261,7 @@ public class FBPAlgorithm {
     }
     
     // TODO: Removed pointer to mult as it doesn't appear to be needed.
-    func ros_calc(_ inputs: InputSet, _ fuels: Dictionary<String, Any>, _ isi: Double) -> Double {
+    public func ros_calc(_ inputs: InputSet, _ fuels: Dictionary<String, Any>, _ isi: Double) -> Double {
         let ft = fuels["fueltype"] as! String
         if (ft == "O1a" || ft == "O1b") {
             return grass(fuels, inputs.cur, isi)
@@ -275,7 +275,7 @@ public class FBPAlgorithm {
         return conifer(fuels, isi)
     }
     
-    func grass(_ fuels: Dictionary<String, Any>, _ cur: Double, _ isi: Double) -> Double {
+    public func grass(_ fuels: Dictionary<String, Any>, _ cur: Double, _ isi: Double) -> Double {
         var mu: Double
         if (cur >= 58.8) {
             mu = 0.176 + 0.02 * (cur - 58.8)
@@ -291,7 +291,7 @@ public class FBPAlgorithm {
         return mu * (a * pow((1.0-exp(-1.0 * b * isi)), c))
     }
     
-    func mixed_wood(_ fuels: Dictionary<String, Any>, _ isi: Double, _ pc: Double) -> Double {
+    public func mixed_wood(_ fuels: Dictionary<String, Any>, _ isi: Double, _ pc: Double) -> Double {
         var mult: Double
         
         let mu = pc/100.0
@@ -319,7 +319,7 @@ public class FBPAlgorithm {
         return mu * ros_c2 + mult * (100.0-pc) / 100.0 * ros_d1
     }
     
-    func dead_fir(_ fuels: Dictionary<String, Any>, _ pdf: Double, _ isi: Double) -> Double {
+    public func dead_fir(_ fuels: Dictionary<String, Any>, _ pdf: Double, _ isi: Double) -> Double {
         var greenness: Double = 1.0
         let ft = fuels["fueltype"] as! String
         let a = fuels["a"] as! Double
@@ -343,7 +343,7 @@ public class FBPAlgorithm {
         return fbpc_mult * rosm3or4_max + (100.0 - pdf) / 100.0 * greenness * ros_d1
     }
     
-    func D2_ROS(_ fuels: Dictionary<String, Any>, _ isi: Double, _ bui: Double) -> Double {
+    public func D2_ROS(_ fuels: Dictionary<String, Any>, _ isi: Double, _ bui: Double) -> Double {
         fbpc_mult = 1.0
         
         if (bui >= 80) {
@@ -356,7 +356,7 @@ public class FBPAlgorithm {
         return 0.0
     }
     
-    func conifer(_ fuels: Dictionary<String, Any>, _ isi: Double) -> Double {
+    public func conifer(_ fuels: Dictionary<String, Any>, _ isi: Double) -> Double {
         fbpc_mult = 1.0
         
         let a = fuels["a"] as! Double
@@ -367,7 +367,7 @@ public class FBPAlgorithm {
     }
     
     // DONE
-    func bui_effect(_ fuels: Dictionary<String, Any>, _ mains: MainOutput, _ givenbui: Double) -> Double {
+    public func bui_effect(_ fuels: Dictionary<String, Any>, _ mains: MainOutput, _ givenbui: Double) -> Double {
         let bui_avg: Double = 50.0
         var bui: Double
         if (givenbui == 0.0) { bui=1.0 } else { bui=givenbui }
@@ -381,7 +381,7 @@ public class FBPAlgorithm {
         return exp(_a * _b)
     }
     
-    func ISF_mixedwood(_ fuels: Dictionary<String, Any>, _ isz: Double, _ pc: Double, _ sf: Double) -> Double {
+    public func ISF_mixedwood(_ fuels: Dictionary<String, Any>, _ isz: Double, _ pc: Double, _ sf: Double) -> Double {
         var check: Double
         
         let ft = fuels["fueltype"] as! String
@@ -433,7 +433,7 @@ public class FBPAlgorithm {
         return (pc / 100.0) * isf_c2 + (100 - pc) / 1000.0 * isf_d1
     }
     
-    func ISF_deadfir(_ fuels: Dictionary<String, Any>, _ isz: Double, _ pdf: Double, _ sf: Double) -> Double {
+    public func ISF_deadfir(_ fuels: Dictionary<String, Any>, _ isz: Double, _ pdf: Double, _ sf: Double) -> Double {
         var check: Double
         var mult: Double
         let ft = fuels["fueltype"] as! String
@@ -483,7 +483,7 @@ public class FBPAlgorithm {
         return (pdf / 100.0) * isf_max + (100.0 - pdf) / 100.0 * isf_d1
     }
     
-    func slope_effect(_ inputs: InputSet, _ fuels: Dictionary<String, Any>, _ mains: MainOutput, _ isi: Double) -> Double {
+    public func slope_effect(_ inputs: InputSet, _ fuels: Dictionary<String, Any>, _ mains: MainOutput, _ isi: Double) -> Double {
         var ps = inputs.ps
         var isf: Double
         var rsz: Double
@@ -557,11 +557,11 @@ public class FBPAlgorithm {
     }
     
     // DONE
-    func fire_intensity(_ fc: Double, _ ros: Double) -> Double {
+    public func fire_intensity(_ fc: Double, _ ros: Double) -> Double {
         return 300.0 * fc * ros
     }
     
-    func foilar_moisture(_ inputs: InputSet, _ mains: MainOutput) -> Double {
+    public func foilar_moisture(_ inputs: InputSet, _ mains: MainOutput) -> Double {
         mains.jd = inputs.jd
         
         if (inputs.fmc != nil) {
@@ -590,7 +590,7 @@ public class FBPAlgorithm {
         }
     }
     
-    func surf_fuel_consump(_ inputs: InputSet) -> Double {
+    public func surf_fuel_consump(_ inputs: InputSet) -> Double {
         if (inputs.fueltype == "C1") {
             var sfc: Double
             if (inputs.ffmc > 84) {
@@ -640,13 +640,13 @@ public class FBPAlgorithm {
     }
     
     // DONE
-    func crit_surf_intensity(_ fuels: Dictionary<String, Any>, _ fmc: Double) -> Double {
+    public func crit_surf_intensity(_ fuels: Dictionary<String, Any>, _ fmc: Double) -> Double {
         let cbh = fuels["cbh"] as! Double
         return 0.001 * pow(cbh * (460.0+25.9 * fmc), 1.5)
     }
     
     // DONE
-    func critical_ros(_ sfc: Double, _ csi: Double) -> Double {
+    public func critical_ros(_ sfc: Double, _ csi: Double) -> Double {
         if (sfc > 0) {
             return csi / (300.0*sfc)
         } else {
@@ -655,7 +655,7 @@ public class FBPAlgorithm {
     }
     
     // DONE
-    func crown_frac_burn(_ rss: Double, _ rso: Double) -> Double {
+    public func crown_frac_burn(_ rss: Double, _ rso: Double) -> Double {
         let cfb = 1.0-exp(-0.230*(rss-rso))
         if (cfb > 0) {
             return cfb
@@ -665,12 +665,12 @@ public class FBPAlgorithm {
     }
     
     // DONE
-    func fire_type(_ csi: Double, _ sfi: Double) -> String {
+    public func fire_type(_ csi: Double, _ sfi: Double) -> String {
         return sfi > csi ? "c" : "s"
     }
     
     // DONE
-    func fire_description(_ cfb: Double) -> String {
+    public func fire_description(_ cfb: Double) -> String {
         if (cfb < 0.1) { return "S" }
         if (cfb < 0.9) { return "I" }
         if (cfb >= 0.9) { return "C" }
@@ -678,7 +678,7 @@ public class FBPAlgorithm {
     }
     
     // DONE
-    func final_ros(_ inputs: InputSet, _ fmc: Double, _ isi: Double, _ cfb: Double, _ rss: Double) -> Double {
+    public func final_ros(_ inputs: InputSet, _ fmc: Double, _ isi: Double, _ cfb: Double, _ rss: Double) -> Double {
         if (inputs.fueltype == "C6") {
             let rsc: Double = foilar_mois_effect(isi, fmc)
             return rss+cfb*(rsc-rss)
@@ -689,14 +689,14 @@ public class FBPAlgorithm {
     }
     
     // DONE
-    func foilar_mois_effect(_ isi: Double, _ fmc: Double) -> Double {
+    public func foilar_mois_effect(_ isi: Double, _ fmc: Double) -> Double {
         let fme_avg: Double = 0.778
         let fme: Double = 1000.0*pow(1.5-0.00275*fmc, 4.0)/(460.0 + 25.9*fmc)
         return 60.0*(1.0-exp(-0.0497*isi))*fme/fme_avg
     }
     
     // DONE
-    func crown_consump(_ inputs: InputSet, _ fuels: Dictionary<String, Any>, _ cfb: Double) -> Double {
+    public func crown_consump(_ inputs: InputSet, _ fuels: Dictionary<String, Any>, _ cfb: Double) -> Double {
         let ft = fuels["fueltype"] as! String
         let cfl = fuels["cfl"] as! Double
         let cfc = cfl * cfb
@@ -710,38 +710,38 @@ public class FBPAlgorithm {
     }
     
     // DONE
-    func l_to_b(_ fueltype: String, _ ws: Double) -> Double {
+    public func l_to_b(_ fueltype: String, _ ws: Double) -> Double {
         if (fueltype == "O1a" || fueltype == "O1b") {
             return ws < 1.0 ? 1.0 : (1.1 * pow(ws, 0.464))
         }
         return 1.0 + 8.729 * pow(1.0 - exp(-0.030 * ws), 2.155)
     }
     
-    func set_all(_ fire: FireOutput, _ time: Double) {
+    public func set_all(_ fire: FireOutput, _ time: Double) {
         fire.time = 0
         fire.rost = fire.ros
         fire.dist = time * fire.ros
     }
     
     // DONE
-    func backfire_isi(_ mains: MainOutput) -> Double {
+    public func backfire_isi(_ mains: MainOutput) -> Double {
         let bfw = exp(-0.05039 * mains.wsv)
         return 0.208 * mains.ff * bfw
     }
     
     // DONE
-    func backfire_ros(_ inputs: InputSet, _ fuels: Dictionary<String, Any>, _ mains: MainOutput, _ bisi: Double) -> Double {
+    public func backfire_ros(_ inputs: InputSet, _ fuels: Dictionary<String, Any>, _ mains: MainOutput, _ bisi: Double) -> Double {
         let bros: Double = ros_calc(inputs,fuels,bisi)
         return bros*bui_effect(fuels, mains, inputs.bui)
     }
     
     // DONE
-    func area(_ dt: Double, _ df: Double) -> Double {
+    public func area(_ dt: Double, _ df: Double) -> Double {
         let a = dt/2.0
         return a*df*Double.pi/10000.0
     }
     
-    func perimeter(_ h: FireOutput, _ b: FireOutput, _ sec: SecondaryOutput, _ lb: Double) -> Double {
+    public func perimeter(_ h: FireOutput, _ b: FireOutput, _ sec: SecondaryOutput, _ lb: Double) -> Double {
         let mult: Double = Double.pi*(1.0+1.0/lb)*(1.0+pow(((lb-1.0)/(2.0*(lb+1.0))),2.0))
 
         sec.pgr = (h.rost + b.rost)/2.0*mult
@@ -750,7 +750,7 @@ public class FBPAlgorithm {
     }
     
     // DONE
-    func acceleration(_ inputs: InputSet, _ cfb: Double) -> Double {
+    public func acceleration(_ inputs: InputSet, _ cfb: Double) -> Double {
         let open_list = ["O1a","O1b","C1","S1","S2","S3"]
         if (open_list.firstIndex(of: inputs.fueltype) != nil) {
             return 0.115
@@ -760,26 +760,26 @@ public class FBPAlgorithm {
     }
     
     // DONE
-    func flankfire_ros(_ ros: Double, _ bros: Double, _ lb: Double) -> Double {
+    public func flankfire_ros(_ ros: Double, _ bros: Double, _ lb: Double) -> Double {
         return (ros+bros)/(lb*2.0)
     }
     
     // Make sure I don't need sec.lbt or fuels.rost set in future functions
     // TODO: Rost isn't used here, is it important anywhere?
-    func flank_spread_distance(_ inputs: InputSet, _ fire: FireOutput, _ sec: SecondaryOutput, _ hrost: Double, _ brost: Double, _ hd: Double, _ bd: Double, _ a: Double) -> Double {
+    public func flank_spread_distance(_ inputs: InputSet, _ fire: FireOutput, _ sec: SecondaryOutput, _ hrost: Double, _ brost: Double, _ hd: Double, _ bd: Double, _ a: Double) -> Double {
         sec.lbt = (sec.lb - 1.0) * (1.0 - exp(-a * inputs.time)) + 1.0
         fire.rost = (hrost + brost)/(sec.lbt * 2.0)
         return (hd + bd)/(2.0 * sec.lbt)
     }
     
     // TODO Determine if fuels.rost is important for any future output
-    func spread_distance(_ inputs: InputSet, _ fire: FireOutput, _ a: Double) -> Double {
+    public func spread_distance(_ inputs: InputSet, _ fire: FireOutput, _ a: Double) -> Double {
         fire.rost = fire.ros * (1.0 - exp(-a * inputs.time))
         return fire.ros * (inputs.time + (exp(-a * inputs.time) / a) - 1.0 / a)
     }
     
     // DONE
-    func time_to_crown(_ ros: Double, _ rso: Double, _ a: Double) -> Double {
+    public func time_to_crown(_ ros: Double, _ rso: Double, _ a: Double) -> Double {
         var ratio: Double
         if (ros > 0) { ratio = rso / ros }
         else { ratio = 1.1 }
@@ -790,7 +790,7 @@ public class FBPAlgorithm {
     }
     
     // How british a function name :)
-    func fire_behaviour(_ inputs: InputSet, _ fuels: Dictionary<String, Any>, _ mains: MainOutput, _ fire: FireOutput) -> Double {
+    public func fire_behaviour(_ inputs: InputSet, _ fuels: Dictionary<String, Any>, _ mains: MainOutput, _ fire: FireOutput) -> Double {
         let sfi = fire_intensity(mains.sfc, fire.rss)
         let firetype = fire_type(mains.csi, sfi)
         if (firetype == "c") {
@@ -809,7 +809,7 @@ public class FBPAlgorithm {
         }
     }
     
-    func flank_fire_behaviour(_ inputs: InputSet, _ fuels: Dictionary<String, Any>, _ mains: MainOutput, _ flanks: FireOutput) -> Double {
+    public func flank_fire_behaviour(_ inputs: InputSet, _ fuels: Dictionary<String, Any>, _ mains: MainOutput, _ flanks: FireOutput) -> Double {
         let sfi = fire_intensity(mains.sfc, flanks.rss)
         let firetype = fire_type(mains.csi, sfi)
         if (firetype == "c") {
@@ -826,7 +826,7 @@ public class FBPAlgorithm {
         }
     }
     
-    func get_fueltype_index(_ fueltype: String) -> Int {
+    public func get_fueltype_index(_ fueltype: String) -> Int {
         var count: Int = 0
         
         for fuel in fuel_coefficients {
@@ -838,7 +838,7 @@ public class FBPAlgorithm {
         return 0
     }
     
-    func get_fueltype_number(_ fueltype: String) -> String {
+    public func get_fueltype_number(_ fueltype: String) -> String {
         let ftp = String(fueltype.prefix(1))
         if (ftp == "C" || ftp == "M") {
             return "c"
@@ -847,7 +847,7 @@ public class FBPAlgorithm {
         }
     }
     
-    func sequence_calculate(_ inputs: InputSet, _ mains: MainOutput, _ secs: SecondaryOutput, _ heads: FireOutput, _ flanks: FireOutput, _ backs: FireOutput) {
+    public func sequence_calculate(_ inputs: InputSet, _ mains: MainOutput, _ secs: SecondaryOutput, _ heads: FireOutput, _ flanks: FireOutput, _ backs: FireOutput) {
         
         inputs.waz = inputs.wdir + 180
         if (inputs.waz >= 360) {
