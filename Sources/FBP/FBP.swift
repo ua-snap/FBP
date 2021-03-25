@@ -24,7 +24,7 @@
 
 import Foundation
 
-class MainOutput {
+public class MainOutput {
     // Surface fuel consumption
     var sfc: Double = 0.0
     // Critical surface intensity
@@ -66,7 +66,7 @@ class MainOutput {
     }
 }
 
-class SecondaryOutput {
+public class SecondaryOutput {
     // Length-to-Breadth
     var lb: Double = 0.0
     // Length-to-Breadth over time
@@ -83,7 +83,7 @@ class SecondaryOutput {
     }
 }
 
-class FireOutput {
+public class FireOutput {
     // Rate of spread
     var ros: Double = 0.0 // m/min
     
@@ -116,7 +116,7 @@ class FireOutput {
     }
 }
 
-class InputSet {
+public class InputSet {
     // Fuel Types
     var fueltype: String = "C1"
     
@@ -182,7 +182,7 @@ class InputSet {
     }
 }
 
-class FBPAlgorithm {
+public class FBPAlgorithm {
     
     let slopelimit_isi: Double = 0.01
     let numfuels: Int = 18
