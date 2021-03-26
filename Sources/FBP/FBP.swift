@@ -201,20 +201,20 @@ public class FBPAlgorithm {
     public init() {
         
         
-        input.fueltype = "C1"
-        input.ffmc = 95.0
-        input.ws = conversions(3.0, "mi2km")
-        input.bui = 120.0
-        input.lat = 35.00313
-        input.lon = 110.00087
-        input.wdir = 0.0
-        input.time = 60.0
-        input.mon = 2.0
-        input.jd = 83.0
-        input.ps = 10.0
-        input.saz = 180.0
-        
-        //sequence_calculate(input, mains, secs, heads, flanks, backs)
+//        input.fueltype = "C1"
+//        input.ffmc = 95.0
+//        input.ws = conversions(3.0, "mi2km")
+//        input.bui = 120.0
+//        input.lat = 35.00313
+//        input.lon = 110.00087
+//        input.wdir = 0.0
+//        input.time = 60.0
+//        input.mon = 2.0
+//        input.jd = 83.0
+//        input.ps = 10.0
+//        input.saz = 180.0
+//        
+//        //sequence_calculate(input, mains, secs, heads, flanks, backs)
     }
     
     public func conversions(_ value: Double, _ conversion: String) -> Double {
@@ -682,7 +682,6 @@ public class FBPAlgorithm {
             let rsc: Double = foilar_mois_effect(isi, fmc)
             return rss+cfb*(rsc-rss)
         } else {
-            print(rss)
             return rss
         }
     }
@@ -846,7 +845,7 @@ public class FBPAlgorithm {
         }
     }
     
-    public func sequence_calculate(_ inputs: InputSet, _ mains: MainOutput, _ secs: SecondaryOutput, _ heads: FireOutput, _ flanks: FireOutput, _ backs: FireOutput) -> (InputSet, MainOutput, SecondaryOutput, FireOutput, FireOutput, FireOutput) {
+    public func sequence_calculate(_ inputs: InputSet, _ mains: MainOutput, _ secs: SecondaryOutput, _ heads: FireOutput, _ flanks: FireOutput, _ backs: FireOutput) {
         
         inputs.waz = inputs.wdir + 180
         if (inputs.waz >= 360) {
@@ -925,7 +924,5 @@ public class FBPAlgorithm {
 
         let accn = acceleration(inputs, heads.cfb)
         secs.lbt = (secs.lb - 1.0) * (1.0 - exp(-accn * inputs.time)) + 1.0
-    
-        return (inputs, mains, secs, heads, flanks, backs)
     }
 }
