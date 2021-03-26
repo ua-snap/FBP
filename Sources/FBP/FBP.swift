@@ -187,6 +187,12 @@ public class FBPAlgorithm {
     let slopelimit_isi: Double = 0.01
     let numfuels: Int = 18
     var fbpc_mult: Double = 1.0
+    let input = InputSet()
+    let mains = MainOutput()
+    let secs = SecondaryOutput()
+    let heads = FireOutput()
+    let flanks = FireOutput()
+    let backs = FireOutput()
     
     // All available fuel coefficients for differing fuel types
     // An array of dictionaries
@@ -194,7 +200,7 @@ public class FBPAlgorithm {
     
     public init() {
         
-        let input = InputSet()
+        
         input.fueltype = "C1"
         input.ffmc = 95.0
         input.ws = conversions(3.0, "mi2km")
@@ -208,14 +214,7 @@ public class FBPAlgorithm {
         input.ps = 10.0
         input.saz = 180.0
         
-
-        let mains = MainOutput()
-        let secs = SecondaryOutput()
-        let heads = FireOutput()
-        let flanks = FireOutput()
-        let backs = FireOutput()
-        
-        sequence_calculate(input, mains, secs, heads, flanks, backs)
+        //sequence_calculate(input, mains, secs, heads, flanks, backs)
     }
     
     public func conversions(_ value: Double, _ conversion: String) -> Double {
