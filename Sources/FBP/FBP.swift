@@ -797,31 +797,37 @@ public class FBPAlgorithm {
             fire.ros = final_ros(inputs, mains.fmc, fire.isi!, fire.cfb, fire.rss)
             fire.cfc = crown_consump(inputs, fuels, fire.cfb)
             fire.fc = fire.cfc + mains.sfc
-            return fire_intensity(fire.fc, fire.ros)
-        } else {
+            fire.fi = fire_intensity(fire.fc, fire.ros)
+        }
+        if (firetype != "c" || mains.covertype == "n") {
             fire.fc = mains.sfc
             fire.cfb = 0.0
             fire.fd = "S"
             fire.ros = fire.rss
-            return sfi
+            fire.fi = sfi
         }
+        return fire.fi
     }
     
     public func flank_fire_behaviour(_ inputs: InputSet, _ fuels: Dictionary<String, Any>, _ mains: MainOutput, _ flanks: FireOutput) -> Double {
         let sfi = fire_intensity(mains.sfc, flanks.rss)
         let firetype = fire_type(mains.csi, sfi)
+
         if (firetype == "c") {
             flanks.cfb = crown_frac_burn(flanks.rss, mains.rso)
             flanks.fd = fire_description(flanks.cfb)
             flanks.cfc = crown_consump(inputs, fuels, flanks.cfb)
             flanks.fc = flanks.cfc + mains.sfc
-            return fire_intensity(flanks.fc, flanks.ros)
-        } else {
+            flanks.fi = fire_intensity(flanks.fc, flanks.ros)
+        }
+
+        if (firetype != "c" || mains.covertype == "n") {
             flanks.fc = mains.sfc
             flanks.cfb = 0.0
             flanks.fd = "S"
-            return sfi
+            flanks.fi = sfi
         }
+        return flanks.fi
     }
     
     public func get_fueltype_index(_ fueltype: String) -> Int {

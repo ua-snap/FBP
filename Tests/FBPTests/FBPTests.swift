@@ -361,10 +361,100 @@ final class FBPTests: XCTestCase {
         
     }
     
+    func test_D1() {
+        
+        /*
+         This tests D1 leafless aspen forest fire.
+        */
+        
+        let fbp = FBPAlgorithm()
+        let input = InputSet()
+        input.fueltype = "D1"
+        input.ffmc = 95.0
+        input.ws = fbp.conversions(3.0, "mi2km")
+        input.bui = 120.0
+        input.lat = 35.00313
+        input.lon = 110.00087
+        input.wdir = 0.0
+        input.time = 60.0
+        input.mon = 2.0
+        input.jd = 83.0
+        
+        let mains = MainOutput()
+        let secs = SecondaryOutput()
+        let heads = FireOutput()
+        let flanks = FireOutput()
+        let backs = FireOutput()
+        
+        fbp.sequence_calculate(input, mains, secs, heads, flanks, backs)
+      
+        
+        // Main Output Assertions
+        XCTAssertEqual(mains.sfc, 1.3331291120938)
+        XCTAssertEqual(mains.csi, 0)
+        XCTAssertEqual(mains.rso, 0)
+        XCTAssertEqual(mains.rss, 3.1338874426931334)
+        XCTAssertEqual(mains.fmc, 0)
+        XCTAssertEqual(mains.sfi, 1253.362975163822)
+        XCTAssertEqual(mains.sf, 1)
+        XCTAssertEqual(mains.raz, 180)
+        XCTAssertEqual(mains.isi, 11.041630714156925)
+        XCTAssertEqual(mains.wsv, 4.82802)
+        XCTAssertEqual(mains.ff, 41.62104842399954)
+        XCTAssertEqual(mains.jd, 0)
+        XCTAssertEqual(mains.jd_min, 0)
+        XCTAssertEqual(mains.covertype, "n")
+        
+        // Secondary Output Assertions
+        XCTAssertEqual(secs.lb, 1.116338263490523)
+        XCTAssertEqual(secs.lbt, 1.1162210194837365)
+        XCTAssertEqual(secs.area, 4.069220075382254)
+        XCTAssertEqual(secs.perm, 716.7105506741715)
+        XCTAssertEqual(secs.pgr, 13.953319995461483)
+        
+        // Head Fire Output Assertions
+        XCTAssertEqual(heads.ros, 3.1338874426931334)
+        XCTAssertEqual(heads.dist, 160.80951476513488)
+        XCTAssertEqual(heads.rost, 3.130729156592109)
+        XCTAssertEqual(heads.rss, 3.1338874426931334)
+        XCTAssertEqual(heads.cfb, 0)
+        XCTAssertEqual(heads.fi, 1253.362975163822)
+        XCTAssertEqual(heads.fc, 1.3331291120938)
+        XCTAssertEqual(heads.cfc, 0)
+        XCTAssertEqual(heads.time, 0)
+        XCTAssertEqual(heads.fd, "S")
+        
+        // Flank Fire Output Assertions
+        XCTAssertEqual(flanks.ros, 2.0990925776488014)
+        XCTAssertEqual(flanks.dist, 107.72228439801073)
+        XCTAssertEqual(flanks.rost, 2.097197401982824)
+        XCTAssertEqual(flanks.rss, 2.0990925776488014)
+        XCTAssertEqual(flanks.cfb, 0)
+        XCTAssertEqual(flanks.fi, 839.5084272730899)
+        XCTAssertEqual(flanks.fc, 1.3331291120938)
+        XCTAssertEqual(flanks.cfc, 0)
+        XCTAssertEqual(flanks.time, 0)
+        XCTAssertEqual(flanks.fd, "S")
+        
+        // Back Fire Output Assertions
+        XCTAssertEqual(backs.ros, 1.5527072833834847)
+        XCTAssertEqual(backs.dist, 79.6742414585942)
+        XCTAssertEqual(backs.rost, 1.5511424876077133)
+        XCTAssertEqual(backs.rss, 1.5527072833834847)
+        XCTAssertEqual(backs.cfb, 0)
+        XCTAssertEqual(backs.fi, 620.9877846115804)
+        XCTAssertEqual(backs.fc, 1.3331291120938)
+        XCTAssertEqual(backs.cfc, 0)
+        XCTAssertEqual(backs.isi, 6.787650675325345)
+        XCTAssertEqual(backs.time, 0)
+        XCTAssertEqual(backs.fd, "S")
+        
+    }
+    
     func test_M1() {
         
         /*
-         This test an M1 mixed forest leafless boreal
+         This tests M1 mixed forest leafless boreal
          forest fire with 10% conifer.
         */
         
@@ -456,7 +546,7 @@ final class FBPTests: XCTestCase {
     func test_M3() {
         
         /*
-         This test an M3 dead balsam fir mixedwood
+         This tests M3 dead balsam fir mixedwood
          forest fire with 60% dead fir.
         */
         
@@ -544,13 +634,198 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(backs.fd, "C")
         
     }
+    
+    func test_O1a() {
+        
+        /*
+         This tests M3 dead balsam fir mixedwood
+         forest fire with 60% dead fir.
+        */
+        
+        let fbp = FBPAlgorithm()
+        let input = InputSet()
+        input.fueltype = "O1a"
+        input.ffmc = 95.0
+        input.ws = fbp.conversions(3.0, "mi2km")
+        input.bui = 120.0
+        input.lat = 35.00313
+        input.lon = 110.00087
+        input.wdir = 0.0
+        input.time = 60.0
+        input.mon = 2.0
+        input.jd = 83.0
+        input.cur = 20.0
+        input.gfl = 100.0
+        
+        let mains = MainOutput()
+        let secs = SecondaryOutput()
+        let heads = FireOutput()
+        let flanks = FireOutput()
+        let backs = FireOutput()
+        
+        fbp.sequence_calculate(input, mains, secs, heads, flanks, backs)
+      
+        
+        // Main Output Assertions
+        XCTAssertEqual(mains.sfc, 100)
+        XCTAssertEqual(mains.csi, 0)
+        XCTAssertEqual(mains.rso, 0)
+        XCTAssertEqual(mains.rss, 0.4005621595072791)
+        XCTAssertEqual(mains.fmc, 0)
+        XCTAssertEqual(mains.sfi, 12016.864785218373)
+        XCTAssertEqual(mains.sf, 1)
+        XCTAssertEqual(mains.raz, 180)
+        XCTAssertEqual(mains.isi, 11.041630714156925)
+        XCTAssertEqual(mains.wsv, 4.82802)
+        XCTAssertEqual(mains.ff, 41.62104842399954)
+        XCTAssertEqual(mains.jd, 0)
+        XCTAssertEqual(mains.jd_min, 0)
+        XCTAssertEqual(mains.covertype, "n")
+        
+        // Secondary Output Assertions
+        XCTAssertEqual(secs.lb, 2.283818198160697)
+        XCTAssertEqual(secs.lbt, 2.282524384887043)
+        XCTAssertEqual(secs.area, 0.0350418822094813)
+        XCTAssertEqual(secs.perm, 74.84019593062051)
+        XCTAssertEqual(secs.pgr, 1.457030598141319)
+        
+        // Head Fire Output Assertions
+        XCTAssertEqual(heads.ros, 0.4005621595072791)
+        XCTAssertEqual(heads.dist, 20.554090624354142)
+        XCTAssertEqual(heads.rost, 0.4001584787994994)
+        XCTAssertEqual(heads.rss, 0.4005621595072791)
+        XCTAssertEqual(heads.cfb, 0)
+        XCTAssertEqual(heads.fi, 12016.864785218373)
+        XCTAssertEqual(heads.fc, 100)
+        XCTAssertEqual(heads.cfc, 0)
+        XCTAssertEqual(heads.time, 0)
+        XCTAssertEqual(heads.fd, "S")
+        
+        // Flank Fire Output Assertions
+        XCTAssertEqual(flanks.ros, 0.13615594628015065)
+        XCTAssertEqual(flanks.dist, 6.990545445601988)
+        XCTAssertEqual(flanks.rost, 0.13609583039282522)
+        XCTAssertEqual(flanks.rss, 0.13615594628015065)
+        XCTAssertEqual(flanks.cfb, 0)
+        XCTAssertEqual(flanks.fi, 4084.6783884045194)
+        XCTAssertEqual(flanks.fc, 100)
+        XCTAssertEqual(flanks.cfc, 0)
+        XCTAssertEqual(flanks.time, 0)
+        XCTAssertEqual(flanks.fd, "S")
+        
+        // Back Fire Output Assertions
+        XCTAssertEqual(backs.ros, 0.22134869629751758)
+        XCTAssertEqual(backs.dist, 11.358090262141054)
+        XCTAssertEqual(backs.rost, 0.22112562430665003)
+        XCTAssertEqual(backs.rss, 0.22134869629751758)
+        XCTAssertEqual(backs.cfb, 0)
+        XCTAssertEqual(backs.fi, 6640.460888925527)
+        XCTAssertEqual(backs.fc, 100)
+        XCTAssertEqual(backs.cfc, 0)
+        XCTAssertEqual(backs.isi, 6.787650675325345)
+        XCTAssertEqual(backs.time, 0)
+        XCTAssertEqual(backs.fd, "S")
+        
+    }
+    
+    func test_S1() {
+        
+        /*
+         This tests S1 jack or lodgepole pine slash forest fire.
+        */
+        
+        let fbp = FBPAlgorithm()
+        let input = InputSet()
+        input.fueltype = "S1"
+        input.ffmc = 95.0
+        input.ws = fbp.conversions(3.0, "mi2km")
+        input.bui = 120.0
+        input.lat = 35.00313
+        input.lon = 110.00087
+        input.wdir = 0.0
+        input.time = 60.0
+        input.mon = 2.0
+        input.jd = 83.0
+        
+        let mains = MainOutput()
+        let secs = SecondaryOutput()
+        let heads = FireOutput()
+        let flanks = FireOutput()
+        let backs = FireOutput()
+        
+        fbp.sequence_calculate(input, mains, secs, heads, flanks, backs)
+      
+        
+        // Main Output Assertions
+        XCTAssertEqual(mains.sfc, 7.7332218639177235)
+        XCTAssertEqual(mains.csi, 0)
+        XCTAssertEqual(mains.rso, 0)
+        XCTAssertEqual(mains.rss, 18.53006966637588)
+        XCTAssertEqual(mains.fmc, 0)
+        XCTAssertEqual(mains.sfi, 42989.14196518096)
+        XCTAssertEqual(mains.sf, 1)
+        XCTAssertEqual(mains.raz, 180)
+        XCTAssertEqual(mains.isi, 11.041630714156925)
+        XCTAssertEqual(mains.wsv, 4.82802)
+        XCTAssertEqual(mains.ff, 41.62104842399954)
+        XCTAssertEqual(mains.jd, 0)
+        XCTAssertEqual(mains.jd_min, 0)
+        XCTAssertEqual(mains.covertype, "n")
+        
+        // Secondary Output Assertions
+        XCTAssertEqual(secs.lb, 1.116338263490523)
+        XCTAssertEqual(secs.lbt, 1.1162210194837365)
+        XCTAssertEqual(secs.area, 157.72689162103038)
+        XCTAssertEqual(secs.perm, 4462.118307244551)
+        XCTAssertEqual(secs.pgr, 86.87100328022824)
+        
+        // Head Fire Output Assertions
+        XCTAssertEqual(heads.ros, 18.53006966637588)
+        XCTAssertEqual(heads.dist, 950.8355249202324)
+        XCTAssertEqual(heads.rost, 18.511395332166853)
+        XCTAssertEqual(heads.rss, 18.53006966637588)
+        XCTAssertEqual(heads.cfb, 0)
+        XCTAssertEqual(heads.fi, 42989.14196518096)
+        XCTAssertEqual(heads.fc, 7.7332218639177235)
+        XCTAssertEqual(heads.cfc, 0)
+        XCTAssertEqual(heads.time, 0)
+        XCTAssertEqual(heads.fd, "S")
+        
+        // Flank Fire Output Assertions
+        XCTAssertEqual(flanks.ros, 13.068594302842895)
+        XCTAssertEqual(flanks.dist, 670.6606688828947)
+        XCTAssertEqual(flanks.rost, 13.056795260640085)
+        XCTAssertEqual(flanks.rss, 13.068594302842895)
+        XCTAssertEqual(flanks.cfb, 0)
+        XCTAssertEqual(flanks.fi, 30318.70175802458)
+        XCTAssertEqual(flanks.fc, 7.7332218639177235)
+        XCTAssertEqual(flanks.cfc, 0)
+        XCTAssertEqual(flanks.time, 0)
+        XCTAssertEqual(flanks.fd, "S")
+        
+        // Back Fire Output Assertions
+        XCTAssertEqual(backs.ros, 10.64787407421968)
+        XCTAssertEqual(backs.dist, 546.3755461759865)
+        XCTAssertEqual(backs.rost, 10.637143301877337)
+        XCTAssertEqual(backs.rss, 10.64787407421968)
+        XCTAssertEqual(backs.cfb, 0)
+        XCTAssertEqual(backs.fi, 24702.71177849949)
+        XCTAssertEqual(backs.fc, 7.7332218639177235)
+        XCTAssertEqual(backs.cfc, 0)
+        XCTAssertEqual(backs.isi, 6.787650675325345)
+        XCTAssertEqual(backs.time, 0)
+        XCTAssertEqual(backs.fd, "S")
+        
+    }
 
     static var allTests = [
         ("C1", test_C1), ("C1 with 10% slope N", test_C1_with_slope),
         ("C1 over 20 minutes", test_C1_over_20_min),
         ("C1 over 240 minutes", test_C1_over_240_min),
+        ("D1", test_D1),
         ("M1 with 10% conifer", test_M1),
-        ("M3 with 60% dead fir", test_M3)
+        ("M3 with 60% dead fir", test_M3),
+        ("O1a with 20% cured grass & 100 grass fuel load", test_O1a)
     ]
 }
 
