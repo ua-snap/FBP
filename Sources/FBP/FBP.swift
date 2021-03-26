@@ -184,19 +184,19 @@ public class InputSet {
 
 public class FBPAlgorithm {
     
-    let slopelimit_isi: Double = 0.01
-    let numfuels: Int = 18
-    var fbpc_mult: Double = 1.0
-    let input = InputSet()
-    let mains = MainOutput()
-    let secs = SecondaryOutput()
-    let heads = FireOutput()
-    let flanks = FireOutput()
-    let backs = FireOutput()
+    public let slopelimit_isi: Double = 0.01
+    public let numfuels: Int = 18
+    public var fbpc_mult: Double = 1.0
+    public let input = InputSet()
+    public let mains = MainOutput()
+    public let secs = SecondaryOutput()
+    public let heads = FireOutput()
+    public let flanks = FireOutput()
+    public let backs = FireOutput()
     
     // All available fuel coefficients for differing fuel types
     // An array of dictionaries
-    let fuel_coefficients: [[String: Any]] = [["fueltype": "M1", "a": 110.0, "b": 0.0282, "c": 1.5, "q": 0.8, "bui0": 50.0, "cbh": 6.0, "cfl": 0.8], ["fueltype": "M2", "a": 110.0, "b": 0.0282, "c": 1.5, "q": 0.8, "bui0": 50.0, "cbh": 6.0, "cfl": 0.8],["fueltype": "M3", "a": 120.0, "b": 0.0572, "c": 1.4, "q": 0.8, "bui0": 50.0, "cbh": 6.0, "cfl": 0.8],["fueltype": "M4", "a": 100.0, "b": 0.0404, "c": 1.48, "q": 0.8, "bui0": 50.0, "cbh": 6.0, "cfl": 0.8],["fueltype": "C1", "a": 90.0, "b": 0.0649, "c": 4.5, "q": 0.9, "bui0": 72.0, "cbh": 2.0, "cfl": 0.75],["fueltype": "C2", "a": 110.0, "b": 0.0282, "c": 1.5, "q": 0.7, "bui0": 64.0, "cbh": 3.0, "cfl": 0.8],["fueltype": "C3", "a": 110.0, "b": 0.0444, "c": 3.0, "q": 0.75, "bui0": 62.0, "cbh": 8.0, "cfl": 1.15],["fueltype": "C4", "a": 110.0, "b": 0.0293, "c": 1.5, "q": 0.8, "bui0": 66.0, "cbh": 4.0, "cfl": 1.2],["fueltype": "C5", "a": 30.0, "b": 0.0697, "c": 4.0, "q": 0.8, "bui0": 56.0, "cbh": 18.0, "cfl": 1.2],["fueltype": "C6", "a": 30.0, "b": 0.08, "c": 3.0, "q": 0.8, "bui0": 62.0, "cbh": 7.0, "cfl": 1.8],["fueltype": "C7", "a": 45.0, "b": 0.0305, "c": 2.0, "q": 0.85, "bui0": 106.0, "cbh": 10.0, "cfl": 0.5],["fueltype": "D1", "a": 30.0, "b": 0.0232, "c": 1.6, "q": 0.9, "bui0": 32.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "D2", "a": 6.0, "b": 0.0232, "c": 1.6, "q": 0.9, "bui0": 32.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "S1", "a": 75.0, "b": 0.0297, "c": 1.3, "q": 0.75, "bui0": 38.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "S2", "a": 40.0, "b": 0.0438, "c": 1.7, "q": 0.75, "bui0": 63.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "S3", "a": 55.0, "b": 0.0829, "c": 3.2, "q": 0.75, "bui0": 31.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "O1a", "a": 190.0, "b": 0.031, "c": 1.4, "q": 1.0, "bui0": 1.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "O1b", "a": 250.0, "b": 0.035, "c": 1.7, "q": 1.0, "bui0": 1.0, "cbh": 0.0, "cfl": 0.0]]
+    public let fuel_coefficients: [[String: Any]] = [["fueltype": "M1", "a": 110.0, "b": 0.0282, "c": 1.5, "q": 0.8, "bui0": 50.0, "cbh": 6.0, "cfl": 0.8], ["fueltype": "M2", "a": 110.0, "b": 0.0282, "c": 1.5, "q": 0.8, "bui0": 50.0, "cbh": 6.0, "cfl": 0.8],["fueltype": "M3", "a": 120.0, "b": 0.0572, "c": 1.4, "q": 0.8, "bui0": 50.0, "cbh": 6.0, "cfl": 0.8],["fueltype": "M4", "a": 100.0, "b": 0.0404, "c": 1.48, "q": 0.8, "bui0": 50.0, "cbh": 6.0, "cfl": 0.8],["fueltype": "C1", "a": 90.0, "b": 0.0649, "c": 4.5, "q": 0.9, "bui0": 72.0, "cbh": 2.0, "cfl": 0.75],["fueltype": "C2", "a": 110.0, "b": 0.0282, "c": 1.5, "q": 0.7, "bui0": 64.0, "cbh": 3.0, "cfl": 0.8],["fueltype": "C3", "a": 110.0, "b": 0.0444, "c": 3.0, "q": 0.75, "bui0": 62.0, "cbh": 8.0, "cfl": 1.15],["fueltype": "C4", "a": 110.0, "b": 0.0293, "c": 1.5, "q": 0.8, "bui0": 66.0, "cbh": 4.0, "cfl": 1.2],["fueltype": "C5", "a": 30.0, "b": 0.0697, "c": 4.0, "q": 0.8, "bui0": 56.0, "cbh": 18.0, "cfl": 1.2],["fueltype": "C6", "a": 30.0, "b": 0.08, "c": 3.0, "q": 0.8, "bui0": 62.0, "cbh": 7.0, "cfl": 1.8],["fueltype": "C7", "a": 45.0, "b": 0.0305, "c": 2.0, "q": 0.85, "bui0": 106.0, "cbh": 10.0, "cfl": 0.5],["fueltype": "D1", "a": 30.0, "b": 0.0232, "c": 1.6, "q": 0.9, "bui0": 32.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "D2", "a": 6.0, "b": 0.0232, "c": 1.6, "q": 0.9, "bui0": 32.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "S1", "a": 75.0, "b": 0.0297, "c": 1.3, "q": 0.75, "bui0": 38.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "S2", "a": 40.0, "b": 0.0438, "c": 1.7, "q": 0.75, "bui0": 63.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "S3", "a": 55.0, "b": 0.0829, "c": 3.2, "q": 0.75, "bui0": 31.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "O1a", "a": 190.0, "b": 0.031, "c": 1.4, "q": 1.0, "bui0": 1.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "O1b", "a": 250.0, "b": 0.035, "c": 1.7, "q": 1.0, "bui0": 1.0, "cbh": 0.0, "cfl": 0.0]]
     
     public init() {
         
