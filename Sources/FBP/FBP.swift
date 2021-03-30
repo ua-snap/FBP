@@ -118,66 +118,66 @@ public class FireOutput {
 
 public class InputSet {
     // Fuel Types
-    var fueltype: String = "C1"
+    public var fueltype: String = "C1"
     
     // Fine Fuel Moisture Code
-    var ffmc: Double = 0.0
+    public var ffmc: Double = 0.0
     
     // Wind Speed
-    var ws: Double = 0.0
+    public var ws: Double = 0.0
     
     // Build up index
-    var bui: Double = 0.0
+    public var bui: Double = 0.0
     
     // Latitude
-    var lat: Double = 0.0
+    public var lat: Double = 0.0
     
     // Longitude
-    var lon: Double = 0.0
+    public var lon: Double = 0.0
     
     // Wind direction
-    var wdir: Double = 0.0
+    public var wdir: Double = 0.0
     
     // Wind azimuth
-    var waz: Double = 0.0
+    public var waz: Double = 0.0
     
     // Percent slope
-    var ps: Double = 0.0
+    public var ps: Double = 0.0
     
     // Slope azimuth
-    var saz: Double = 0.0
+    public var saz: Double = 0.0
     
     // percentage conifer of mixedwood
-    var pc: Double = 0.0
+    public var pc: Double = 0.0
     
     // percentage dead fire in M3 or M4
-    var pdf: Double = 0.0
+    public var pdf: Double = 0.0
     
     // degree of curing of grass for O1[a|b]
-    var cur: Double = 0.0
+    public var cur: Double = 0.0
     
     // grass fuel load for O1[a|b]
-    var gfl: Double = 0.0
+    public var gfl: Double = 0.0
     
     // Prediction duration in minutes
-    var time: Double = 0.0
+    public var time: Double = 0.0
     
     // Month of prediction start
-    var mon: Double = 0.0
+    public var mon: Double = 0.0
     
     // Julian calendar day
-    var jd: Double = 0.0
+    public var jd: Double = 0.0
     
     // Elevation of observation (optional)
-    var elev: Double?
+    public var elev: Double?
     
     // Foilar moisture content (optional)
-    var fmc: Double?
+    public var fmc: Double?
     
     // No idea what this is or what it's used for at this point
-    var jd_min: Double?
+    public var jd_min: Double?
     
-    init() {
+    public init() {
         
     }
 }
