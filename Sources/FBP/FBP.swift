@@ -26,40 +26,40 @@ import Foundation
 
 public class MainOutput {
     // Surface fuel consumption
-    var sfc: Double = 0.0
+    public var sfc: Double = 0.0
     // Critical surface intensity
-    var csi: Double = 0.0
+    public var csi: Double = 0.0
     // Final rate of spread
-    var rso: Double = 0.0
+    public var rso: Double = 0.0
     // Foilar moisture content
-    var fmc: Double = 0.0
+    public var fmc: Double = 0.0
     // Surface fire intensity
-    var sfi: Double = 0.0
+    public var sfi: Double = 0.0
     // Initial rate of spread
-    var rss: Double = 0.0
+    public var rss: Double = 0.0
     // Initial spread index
-    var isi: Double = 0.0
+    public var isi: Double = 0.0
     
-    var sf: Double = 1.0
+    public var sf: Double = 1.0
     
     // Modified wind aziumth based on slope percentage and slope direction
     // in relation to the wind direction and speed
-    var raz: Double = 0.0
+    public var raz: Double = 0.0
     
     // Modified wind speed based on slope
-    var wsv: Double = 0.0
+    public var wsv: Double = 0.0
     
-    // Fine fuel?
-    var ff: Double = 0.0
+    // Fine fuel
+    public var ff: Double = 0.0
     
     // Julian date value
-    var jd: Double = 0.0
+    public var jd: Double = 0.0
     
     // Still don't know what this does for me
-    var jd_min: Double  = 0.0
+    public var jd_min: Double  = 0.0
     
     // Specifies the covertype
-    var covertype: String = ""
+    public var covertype: String = ""
     
     init() {
         
@@ -68,15 +68,15 @@ public class MainOutput {
 
 public class SecondaryOutput {
     // Length-to-Breadth
-    var lb: Double = 0.0
+    public var lb: Double = 0.0
     // Length-to-Breadth over time
-    var lbt: Double = 0.0
+    public var lbt: Double = 0.0
     // Elliptical Fire Area
-    var area: Double = 0.0
+    public var area: Double = 0.0
     // Elliptical Fire Perimeter
-    var perm: Double = 0.0
+    public var perm: Double = 0.0
     // Rate of Perimeter Growth
-    var pgr: Double = 0.0
+    public var pgr: Double = 0.0
     
     init() {
         
@@ -85,31 +85,37 @@ public class SecondaryOutput {
 
 public class FireOutput {
     // Rate of spread
-    var ros: Double = 0.0 // m/min
+    public var ros: Double = 0.0 // m/min
     
     // Distance
-    var dist: Double = 0.0 // m
+    public var dist: Double = 0.0 // m
     
     // Rate of spread at period end?
-    var rost: Double = 0.0
+    public var rost: Double = 0.0
     
     // Rate of spread at start
-    var rss: Double = 0.0
+    public var rss: Double = 0.0
     
     // Crown burn fraction
-    var cfb: Double = 0.0
+    public var cfb: Double = 0.0
+    
     // Fire intensity
-    var fi: Double = 0.0
+    public var fi: Double = 0.0
+    
     // Total fuel consumption
-    var fc: Double = 0.0
+    public var fc: Double = 0.0
+    
     // Crown fuel consumption
-    var cfc: Double = 0.0
+    public var cfc: Double = 0.0
+    
     // Amount of time between start and finish
-    var time: Double = 0.0
+    public var time: Double = 0.0
+    
     // Fire descriptor code
-    var fd: String = ""
+    public var fd: String = ""
+    
     // Only used by back fire - Initial spread index
-    var isi: Double?
+    public var isi: Double?
     
     init() {
         
