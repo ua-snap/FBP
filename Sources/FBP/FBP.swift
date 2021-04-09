@@ -429,7 +429,7 @@ public class FBPAlgorithm {
         
         let isf_d1 = (1.0 / (-1.0 * db)) * log(check)
         
-        return (pc / 100.0) * isf_c2 + (100 - pc) / 1000.0 * isf_d1
+        return (pc / 100.0) * isf_c2 + (100 - pc) / 100.0 * isf_d1
     }
     
     public func ISF_deadfir(_ fuels: Dictionary<String, Any>, _ isz: Double, _ pdf: Double, _ sf: Double) -> Double {
