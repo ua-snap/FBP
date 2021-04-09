@@ -206,32 +206,26 @@ public class FBPAlgorithm {
     
     public init() {
         
-        
-//        input.fueltype = "C1"
-//        input.ffmc = 95.0
-//        input.ws = conversions(3.0, "mi2km")
-//        input.bui = 120.0
-//        input.lat = 35.00313
-//        input.lon = 110.00087
-//        input.wdir = 0.0
-//        input.time = 60.0
-//        input.mon = 2.0
-//        input.jd = 83.0
-//        input.ps = 10.0
-//        input.saz = 180.0
-//        
-//        //sequence_calculate(input, mains, secs, heads, flanks, backs)
     }
     
     public func conversions(_ value: Double, _ conversion: String) -> Double {
+        if (conversion == "f2c") { return (value - 32) * 5 / 9 }
+        if (conversion == "i2mm") { return 25.4 * value }
         if (conversion == "mi2km") { return value * 1.60934 }
         if (conversion == "km2mi") { return value / 1.60934 }
         if (conversion == "km2ch") { return value * 49.7097 }
         if (conversion == "kgmm2tpa") { return value * 4.460897 }
+        if (conversion == "tpa2kgmm") { return value * (1/4.460897) }
         if (conversion == "mmin2chph") { return value * 2.98258 }
+        if (conversion == "mmin2fpm") { return value * 3.28084 }
+        if (conversion == "mmin2mph") { return value * 0.0372823 }
+        if (conversion == "ha2a") { return value * 2.47105 }
         if (conversion == "m2ch") { return value * 0.0497097 }
+        if (conversion == "m2ft") { return value * 3.28084 }
+        if (conversion == "ft2m") { return value * 0.3048 }
         if (conversion == "kwm2bfs") { return value * 0.28909 }
         if (conversion == "kwm2flft") { return 0.45 * pow(value * 0.28909, 0.46) }
+        if (conversion == "kwm2flm") { return 0.13716 * pow(value * 0.28909, 0.46) }
         return value
     }
     
