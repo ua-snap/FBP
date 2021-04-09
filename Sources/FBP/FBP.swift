@@ -537,17 +537,17 @@ public class FBPAlgorithm {
             wse = 28.0 - log(1.0 - isf/(2.496 * mains.ff)) / 0.0818
         }
         
-        let wrad = inputs.waz / 180.0 * Double.pi
+        let wrad = inputs.waz / 180.0 * 3.1415926
         let wsx = inputs.ws * sin(wrad)
         let wsy = inputs.ws * cos(wrad)
-        let srad = inputs.saz / 180.0 * Double.pi
+        let srad = inputs.saz / 180.0 * 3.1415926
         let wsex = wse * sin(srad)
         let wsey = wse * cos(srad)
         let wsvx = wsx + wsex
         let wsvy = wsy + wsey
         let wsv = sqrt(wsvx * wsvx + wsvy * wsvy)
         var raz = acos(wsvy/wsv)
-        raz = (raz/Double.pi) * 180.0
+        raz = (raz/3.1415926) * 180.0
         if (wsvx < 0) {
             raz = 360 - raz
         }
@@ -736,11 +736,11 @@ public class FBPAlgorithm {
     // DONE
     public func area(_ dt: Double, _ df: Double) -> Double {
         let a = dt/2.0
-        return a*df*Double.pi/10000.0
+        return a*df*3.1415926/10000.0
     }
     
     public func perimeter(_ h: FireOutput, _ b: FireOutput, _ sec: SecondaryOutput, _ lb: Double) -> Double {
-        let mult: Double = Double.pi*(1.0+1.0/lb)*(1.0+pow(((lb-1.0)/(2.0*(lb+1.0))),2.0))
+        let mult: Double = 3.1415926*(1.0+1.0/lb)*(1.0+pow(((lb-1.0)/(2.0*(lb+1.0))),2.0))
 
         sec.pgr = (h.rost + b.rost)/2.0*mult
         
