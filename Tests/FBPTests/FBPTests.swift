@@ -644,7 +644,7 @@ final class FBPTests: XCTestCase {
         
         let fbp = FBPAlgorithm()
         let input = InputSet()
-        input.fueltype = "O1a"
+        input.fueltype = "O1A"
         input.ffmc = 95.0
         input.ws = fbp.conversions(3.0, "mi2km")
         input.bui = 120.0

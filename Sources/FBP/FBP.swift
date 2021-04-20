@@ -202,7 +202,7 @@ public class FBPAlgorithm {
     
     // All available fuel coefficients for differing fuel types
     // An array of dictionaries
-    public let fuel_coefficients: [[String: Any]] = [["fueltype": "M1", "a": 110.0, "b": 0.0282, "c": 1.5, "q": 0.8, "bui0": 50.0, "cbh": 6.0, "cfl": 0.8], ["fueltype": "M2", "a": 110.0, "b": 0.0282, "c": 1.5, "q": 0.8, "bui0": 50.0, "cbh": 6.0, "cfl": 0.8],["fueltype": "M3", "a": 120.0, "b": 0.0572, "c": 1.4, "q": 0.8, "bui0": 50.0, "cbh": 6.0, "cfl": 0.8],["fueltype": "M4", "a": 100.0, "b": 0.0404, "c": 1.48, "q": 0.8, "bui0": 50.0, "cbh": 6.0, "cfl": 0.8],["fueltype": "C1", "a": 90.0, "b": 0.0649, "c": 4.5, "q": 0.9, "bui0": 72.0, "cbh": 2.0, "cfl": 0.75],["fueltype": "C2", "a": 110.0, "b": 0.0282, "c": 1.5, "q": 0.7, "bui0": 64.0, "cbh": 3.0, "cfl": 0.8],["fueltype": "C3", "a": 110.0, "b": 0.0444, "c": 3.0, "q": 0.75, "bui0": 62.0, "cbh": 8.0, "cfl": 1.15],["fueltype": "C4", "a": 110.0, "b": 0.0293, "c": 1.5, "q": 0.8, "bui0": 66.0, "cbh": 4.0, "cfl": 1.2],["fueltype": "C5", "a": 30.0, "b": 0.0697, "c": 4.0, "q": 0.8, "bui0": 56.0, "cbh": 18.0, "cfl": 1.2],["fueltype": "C6", "a": 30.0, "b": 0.08, "c": 3.0, "q": 0.8, "bui0": 62.0, "cbh": 7.0, "cfl": 1.8],["fueltype": "C7", "a": 45.0, "b": 0.0305, "c": 2.0, "q": 0.85, "bui0": 106.0, "cbh": 10.0, "cfl": 0.5],["fueltype": "D1", "a": 30.0, "b": 0.0232, "c": 1.6, "q": 0.9, "bui0": 32.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "D2", "a": 6.0, "b": 0.0232, "c": 1.6, "q": 0.9, "bui0": 32.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "S1", "a": 75.0, "b": 0.0297, "c": 1.3, "q": 0.75, "bui0": 38.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "S2", "a": 40.0, "b": 0.0438, "c": 1.7, "q": 0.75, "bui0": 63.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "S3", "a": 55.0, "b": 0.0829, "c": 3.2, "q": 0.75, "bui0": 31.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "O1a", "a": 190.0, "b": 0.031, "c": 1.4, "q": 1.0, "bui0": 1.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "O1b", "a": 250.0, "b": 0.035, "c": 1.7, "q": 1.0, "bui0": 1.0, "cbh": 0.0, "cfl": 0.0]]
+    public let fuel_coefficients: [[String: Any]] = [["fueltype": "M1", "a": 110.0, "b": 0.0282, "c": 1.5, "q": 0.8, "bui0": 50.0, "cbh": 6.0, "cfl": 0.8], ["fueltype": "M2", "a": 110.0, "b": 0.0282, "c": 1.5, "q": 0.8, "bui0": 50.0, "cbh": 6.0, "cfl": 0.8],["fueltype": "M3", "a": 120.0, "b": 0.0572, "c": 1.4, "q": 0.8, "bui0": 50.0, "cbh": 6.0, "cfl": 0.8],["fueltype": "M4", "a": 100.0, "b": 0.0404, "c": 1.48, "q": 0.8, "bui0": 50.0, "cbh": 6.0, "cfl": 0.8],["fueltype": "C1", "a": 90.0, "b": 0.0649, "c": 4.5, "q": 0.9, "bui0": 72.0, "cbh": 2.0, "cfl": 0.75],["fueltype": "C2", "a": 110.0, "b": 0.0282, "c": 1.5, "q": 0.7, "bui0": 64.0, "cbh": 3.0, "cfl": 0.8],["fueltype": "C3", "a": 110.0, "b": 0.0444, "c": 3.0, "q": 0.75, "bui0": 62.0, "cbh": 8.0, "cfl": 1.15],["fueltype": "C4", "a": 110.0, "b": 0.0293, "c": 1.5, "q": 0.8, "bui0": 66.0, "cbh": 4.0, "cfl": 1.2],["fueltype": "C5", "a": 30.0, "b": 0.0697, "c": 4.0, "q": 0.8, "bui0": 56.0, "cbh": 18.0, "cfl": 1.2],["fueltype": "C6", "a": 30.0, "b": 0.08, "c": 3.0, "q": 0.8, "bui0": 62.0, "cbh": 7.0, "cfl": 1.8],["fueltype": "C7", "a": 45.0, "b": 0.0305, "c": 2.0, "q": 0.85, "bui0": 106.0, "cbh": 10.0, "cfl": 0.5],["fueltype": "D1", "a": 30.0, "b": 0.0232, "c": 1.6, "q": 0.9, "bui0": 32.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "D2", "a": 6.0, "b": 0.0232, "c": 1.6, "q": 0.9, "bui0": 32.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "S1", "a": 75.0, "b": 0.0297, "c": 1.3, "q": 0.75, "bui0": 38.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "S2", "a": 40.0, "b": 0.0438, "c": 1.7, "q": 0.75, "bui0": 63.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "S3", "a": 55.0, "b": 0.0829, "c": 3.2, "q": 0.75, "bui0": 31.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "O1A", "a": 190.0, "b": 0.031, "c": 1.4, "q": 1.0, "bui0": 1.0, "cbh": 0.0, "cfl": 0.0],["fueltype": "O1B", "a": 250.0, "b": 0.035, "c": 1.7, "q": 1.0, "bui0": 1.0, "cbh": 0.0, "cfl": 0.0]]
     
     public init() {
         
@@ -262,7 +262,7 @@ public class FBPAlgorithm {
     // TODO: Removed pointer to mult as it doesn't appear to be needed.
     public func ros_calc(_ inputs: InputSet, _ fuels: Dictionary<String, Any>, _ isi: Double) -> Double {
         let ft = fuels["fueltype"] as! String
-        if (ft == "O1a" || ft == "O1b") {
+        if (ft == "O1A" || ft == "O1B") {
             return grass(fuels, inputs.cur, isi)
         } else if (ft == "M1" || ft == "M2") {
             return mixed_wood(fuels, isi, inputs.pc)
@@ -611,7 +611,7 @@ public class FBPAlgorithm {
             }
             let wfc = 1.5 * (1.0 - exp(-0.0201 * inputs.bui))
             return ffc + wfc
-        } else if (inputs.fueltype == "O1a" || inputs.fueltype == "O1b") {
+        } else if (inputs.fueltype == "O1A" || inputs.fueltype == "O1B") {
             return inputs.gfl
         } else if (inputs.fueltype == "M1" || inputs.fueltype == "M2") {
             let sfc_c2 = 5.0 * (1.0 - exp(-0.0115 * inputs.bui))
@@ -709,7 +709,7 @@ public class FBPAlgorithm {
     
     // DONE
     public func l_to_b(_ fueltype: String, _ ws: Double) -> Double {
-        if (fueltype == "O1a" || fueltype == "O1b") {
+        if (fueltype == "O1A" || fueltype == "O1B") {
             return ws < 1.0 ? 1.0 : (1.1 * pow(ws, 0.464))
         }
         return 1.0 + 8.729 * pow(1.0 - exp(-0.030 * ws), 2.155)
@@ -749,7 +749,7 @@ public class FBPAlgorithm {
     
     // DONE
     public func acceleration(_ inputs: InputSet, _ cfb: Double) -> Double {
-        let open_list = ["O1a","O1b","C1","S1","S2","S3"]
+        let open_list = ["O1A","O1B","C1","S1","S2","S3"]
         if (open_list.firstIndex(of: inputs.fueltype) != nil) {
             return 0.115
         }
