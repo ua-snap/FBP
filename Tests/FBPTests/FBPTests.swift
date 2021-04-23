@@ -43,6 +43,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 41.62104842399954)
         XCTAssertEqual(mains.jd, 83)
         XCTAssertEqual(mains.jd_min, 103)
+        XCTAssertEqual(mains.pig, 0.002993517893407517)
         XCTAssertEqual(mains.covertype, "c")
         
         // Secondary Output Assertions
@@ -134,6 +135,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 41.62104842399954)
         XCTAssertEqual(mains.jd, 83)
         XCTAssertEqual(mains.jd_min, 103)
+        XCTAssertEqual(mains.pig, 0.0017464407846487023)
         XCTAssertEqual(mains.covertype, "c")
         
         // Secondary Output Assertions
@@ -223,6 +225,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 41.62104842399954)
         XCTAssertEqual(mains.jd, 83)
         XCTAssertEqual(mains.jd_min, 103)
+        XCTAssertEqual(mains.pig, 0.002993517893407517)
         XCTAssertEqual(mains.covertype, "c")
         
         // Secondary Output Assertions
@@ -313,6 +316,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 41.62104842399954)
         XCTAssertEqual(mains.jd, 83)
         XCTAssertEqual(mains.jd_min, 103)
+        XCTAssertEqual(mains.pig, 0.002993517893407517)
         XCTAssertEqual(mains.covertype, "c")
         
         // Secondary Output Assertions
@@ -403,6 +407,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 41.62104842399954)
         XCTAssertEqual(mains.jd, 0)
         XCTAssertEqual(mains.jd_min, 0)
+        XCTAssertEqual(mains.pig, 0.9208024419392727)
         XCTAssertEqual(mains.covertype, "n")
         
         // Secondary Output Assertions
@@ -495,6 +500,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 41.62104842399954)
         XCTAssertEqual(mains.jd, 83)
         XCTAssertEqual(mains.jd_min, 103)
+        XCTAssertEqual(mains.pig, 0.30618836922673665)
         XCTAssertEqual(mains.covertype, "c")
         
         // Secondary Output Assertions
@@ -587,6 +593,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 41.62104842399954)
         XCTAssertEqual(mains.jd, 83)
         XCTAssertEqual(mains.jd_min, 103)
+        XCTAssertEqual(mains.pig, 0.8791069189460682)
         XCTAssertEqual(mains.covertype, "c")
         
         // Secondary Output Assertions
@@ -680,6 +687,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 41.62104842399954)
         XCTAssertEqual(mains.jd, 0)
         XCTAssertEqual(mains.jd_min, 0)
+        XCTAssertEqual(mains.pig, 0.07663353828803068)
         XCTAssertEqual(mains.covertype, "n")
         
         // Secondary Output Assertions
@@ -770,6 +778,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 41.62104842399954)
         XCTAssertEqual(mains.jd, 0)
         XCTAssertEqual(mains.jd_min, 0)
+        XCTAssertEqual(mains.pig, -1.0)
         XCTAssertEqual(mains.covertype, "n")
         
         // Secondary Output Assertions
@@ -864,6 +873,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 54.55826767723967)
         XCTAssertEqual(mains.jd, 99.0)
         XCTAssertEqual(mains.jd_min, 0)
+        XCTAssertEqual(mains.pig, 0.14185106490048727)
         XCTAssertEqual(mains.covertype, "c")
         
         // Secondary Output Assertions
@@ -920,6 +930,7 @@ final class FBPTests: XCTestCase {
         ("M1 with 10% conifer", test_M1),
         ("M1 with 15% conifer, 5% FMC and 10% slope", test_M1_FMC),
         ("M3 with 60% dead fir", test_M3),
+        ("S1 over 60 minutes", test_S1),
         ("O1a with 20% cured grass & 100 grass fuel load", test_O1a)
     ]
 }

@@ -52,6 +52,9 @@ public class MainOutput {
     // Fine fuel
     public var ff: Double = 0.0
     
+    // Probability of ignition
+    public var pig: Double = 0.0
+    
     // Julian date value
     public var jd: Double = 0.0
     
@@ -173,6 +176,9 @@ public class InputSet {
     
     // Julian calendar day
     public var jd: Double = 0.0
+    
+    // Duff moisture content (optional)
+    public var dmc: Double = 0.0
     
     // Elevation of observation (optional)
     public var elev: Double?
@@ -851,6 +857,87 @@ public class FBPAlgorithm {
         }
     }
     
+    public func prob_of_ignition(_ inputs: InputSet, _ isi: Double) -> Double {
+        if (inputs.fueltype == "C6" || inputs.fueltype == "S1" || inputs.fueltype == "S2" || inputs.fueltype == "S3") {
+            return -1.0
+        }
+        
+        // Probability of ignition variables
+        var B0: Double = 0
+        var B1: Double = 0
+        var B2: Double = 0
+        var B4: Double = 0
+        var B6: Double = 0
+        
+        switch inputs.fueltype {
+        case "C1":
+            B0 = 1.965
+            B6 = -0.704
+        case "C2":
+            B0 = 33.299
+            B1 = -0.121
+            B2 = -0.032
+        case "C3":
+            B0 = 2.199
+            B2 = -0.021
+            B6 = -0.265
+        case "C4":
+            B0 = 14.424
+            B1 = -0.171
+            B2 = -0.017
+        case "C5":
+            B0 = 1.563
+            B1 = -0.077
+            B4 = -0.005
+            B6 = -0.478
+        case "M1":
+            B0 = 45.827
+            B1 = -0.491
+        case "M2":
+            B0 = 25.54
+            B1 = -0.264
+            B2 = -0.036
+        case "M3":
+            B0 = 20.794
+            B1 = -0.198
+            B2 = -0.051
+        case "M4":
+            B0 = 45.827
+            B1 = -0.491
+        case "D1":
+            B0 = 5.026
+            B6 = -0.233
+        case "D2":
+            B0 = 3.503
+            B2 = -0.044
+            B6 = -0.407
+        case "O1A":
+            if (inputs.gfl < 60) {
+                B0 = 46.942
+                B1 = -0.508
+                B2 = -0.063
+            } else {
+                B0 = 0.161
+                B2 = -0.016
+                B6 = -0.24
+            }
+        case "O1B":
+            if (inputs.gfl < 60) {
+                B0 = 46.942
+                B1 = -0.508
+                B2 = -0.063
+            } else {
+                B0 = 0.161
+                B2 = -0.016
+                B6 = -0.24
+            }
+        default:
+            return -1.0
+        }
+        
+        return 1 / (1 + exp(-(B0 + B1 * inputs.ffmc + B2 * inputs.dmc + B4 * inputs.bui + B6 * isi)))
+    }
+    
     public func sequence_calculate(_ inputs: InputSet, _ mains: MainOutput, _ secs: SecondaryOutput, _ heads: FireOutput, _ flanks: FireOutput, _ backs: FireOutput) {
         
         inputs.waz = inputs.wdir + 180
@@ -869,6 +956,7 @@ public class FBPAlgorithm {
         heads.rss = mains.rss
         mains.sfc = surf_fuel_consump(inputs)
         mains.sfi = fire_intensity(mains.sfc, mains.rss)
+        mains.pig = prob_of_ignition(inputs, mains.isi)
 
         if (mains.covertype == "c") {
             mains.fmc = foilar_moisture(inputs, mains)
