@@ -935,7 +935,7 @@ public class FBPAlgorithm {
             return -1.0
         }
         
-        return 1 / (1 + exp(-(B0 + B1 * inputs.ffmc + B2 * inputs.dmc + B4 * inputs.bui + B6 * isi)))
+        return 1 / (1 + exp(B0 + B1 * inputs.ffmc + B2 * inputs.dmc + B4 * inputs.bui + B6 * isi))
     }
     
     public func sequence_calculate(_ inputs: InputSet, _ mains: MainOutput, _ secs: SecondaryOutput, _ heads: FireOutput, _ flanks: FireOutput, _ backs: FireOutput) {

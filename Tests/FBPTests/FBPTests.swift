@@ -43,7 +43,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 41.62104842399954)
         XCTAssertEqual(mains.jd, 83)
         XCTAssertEqual(mains.jd_min, 103)
-        XCTAssertEqual(mains.pig, 0.002993517893407517)
+        XCTAssertEqual(mains.pig, 0.9970064821065925)
         XCTAssertEqual(mains.covertype, "c")
         
         // Secondary Output Assertions
@@ -135,7 +135,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 41.62104842399954)
         XCTAssertEqual(mains.jd, 83)
         XCTAssertEqual(mains.jd_min, 103)
-        XCTAssertEqual(mains.pig, 0.0017464407846487023)
+        XCTAssertEqual(mains.pig, 0.9982535592153513)
         XCTAssertEqual(mains.covertype, "c")
         
         // Secondary Output Assertions
@@ -225,7 +225,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 41.62104842399954)
         XCTAssertEqual(mains.jd, 83)
         XCTAssertEqual(mains.jd_min, 103)
-        XCTAssertEqual(mains.pig, 0.002993517893407517)
+        XCTAssertEqual(mains.pig, 0.9970064821065925)
         XCTAssertEqual(mains.covertype, "c")
         
         // Secondary Output Assertions
@@ -316,7 +316,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 41.62104842399954)
         XCTAssertEqual(mains.jd, 83)
         XCTAssertEqual(mains.jd_min, 103)
-        XCTAssertEqual(mains.pig, 0.002993517893407517)
+        XCTAssertEqual(mains.pig, 0.9970064821065925)
         XCTAssertEqual(mains.covertype, "c")
         
         // Secondary Output Assertions
@@ -407,7 +407,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 41.62104842399954)
         XCTAssertEqual(mains.jd, 0)
         XCTAssertEqual(mains.jd_min, 0)
-        XCTAssertEqual(mains.pig, 0.9208024419392727)
+        XCTAssertEqual(mains.pig, 0.07919755806072731)
         XCTAssertEqual(mains.covertype, "n")
         
         // Secondary Output Assertions
@@ -500,7 +500,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 41.62104842399954)
         XCTAssertEqual(mains.jd, 83)
         XCTAssertEqual(mains.jd_min, 103)
-        XCTAssertEqual(mains.pig, 0.30618836922673665)
+        XCTAssertEqual(mains.pig, 0.6938116307732634)
         XCTAssertEqual(mains.covertype, "c")
         
         // Secondary Output Assertions
@@ -593,7 +593,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 41.62104842399954)
         XCTAssertEqual(mains.jd, 83)
         XCTAssertEqual(mains.jd_min, 103)
-        XCTAssertEqual(mains.pig, 0.8791069189460682)
+        XCTAssertEqual(mains.pig, 0.1208930810539318)
         XCTAssertEqual(mains.covertype, "c")
         
         // Secondary Output Assertions
@@ -687,7 +687,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 41.62104842399954)
         XCTAssertEqual(mains.jd, 0)
         XCTAssertEqual(mains.jd_min, 0)
-        XCTAssertEqual(mains.pig, 0.07663353828803068)
+        XCTAssertEqual(mains.pig, 0.9233664617119692)
         XCTAssertEqual(mains.covertype, "n")
         
         // Secondary Output Assertions
@@ -873,7 +873,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 54.55826767723967)
         XCTAssertEqual(mains.jd, 99.0)
         XCTAssertEqual(mains.jd_min, 0)
-        XCTAssertEqual(mains.pig, 0.14185106490048727)
+        XCTAssertEqual(mains.pig, 0.8581489350995127)
         XCTAssertEqual(mains.covertype, "c")
         
         // Secondary Output Assertions
