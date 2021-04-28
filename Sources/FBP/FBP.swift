@@ -875,8 +875,8 @@ public class FBPAlgorithm {
             B6 = -0.704
         case "C2":
             B0 = 33.299
-            B1 = -0.121
-            B2 = -0.032
+            B1 = -0.353
+            B2 = -0.057
         case "C3":
             B0 = 2.199
             B2 = -0.021
@@ -887,8 +887,12 @@ public class FBPAlgorithm {
             B2 = -0.017
         case "C5":
             B0 = 1.563
-            B1 = -0.077
             B4 = -0.005
+            B6 = -0.478
+        case "C7":
+            B0 = 6.378
+            B1 = -0.077
+            B4 = -0.003
             B6 = -0.478
         case "M1":
             B0 = 45.827
@@ -905,12 +909,12 @@ public class FBPAlgorithm {
             B0 = 45.827
             B1 = -0.491
         case "D1":
-            B0 = 5.026
-            B6 = -0.233
-        case "D2":
             B0 = 3.503
             B2 = -0.044
             B6 = -0.407
+        case "D2":
+            B0 = 5.026
+            B6 = -0.233
         case "O1A":
             if (inputs.gfl < 60) {
                 B0 = 46.942

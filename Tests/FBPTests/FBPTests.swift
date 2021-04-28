@@ -407,7 +407,7 @@ final class FBPTests: XCTestCase {
         XCTAssertEqual(mains.ff, 41.62104842399954)
         XCTAssertEqual(mains.jd, 0)
         XCTAssertEqual(mains.jd_min, 0)
-        XCTAssertEqual(mains.pig, 0.07919755806072731)
+        XCTAssertEqual(mains.pig, 0.7292742805970207)
         XCTAssertEqual(mains.covertype, "n")
         
         // Secondary Output Assertions
