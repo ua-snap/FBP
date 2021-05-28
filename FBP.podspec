@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "FBP"
-  spec.version      = "0.1.12"
+  spec.version      = "0.1.13"
   spec.summary      = "A Swift CocoaPods library with the FBP algorithm."
 
   # This description is used to generate tags and improve search results.

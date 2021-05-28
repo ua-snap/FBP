@@ -575,10 +575,10 @@ public class FBPAlgorithm {
 
         if (inputs.jd_min == nil || inputs.jd_min! <= 0.0) {
             if (inputs.elev == nil || inputs.elev! <= 0.0) {
-                let latn = 23.4 * exp(-0.0360 * (150 - inputs.lon)) + 46.0
+                let latn = 23.4 * exp(-0.0360 * (150 - abs(inputs.lon))) + 46.0
                 mains.jd_min = floor(0.5 + 151.0 * inputs.lat / latn)
             } else {
-                let latn = 33.7 * exp(-0.0351 * (150 - inputs.lon)) + 43.0
+                let latn = 33.7 * exp(-0.0351 * (150 - abs(inputs.lon))) + 43.0
                 mains.jd_min = floor(0.5 + 142.1 * inputs.lat / latn + (0.0172 * inputs.elev!))
             }
         } else {
