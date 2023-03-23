@@ -1,3 +1,5 @@
 # Fire Behavior Prediction Algorithm
 
-This is the FBP and all that.
+This is an implementation of the Fire Behavior Prediction algorithm written in Swift as a publically available CocoaPod for addition to iOS phone applications and projects. 
+
+This code has been translated from the algorithm used to run this website: https://akff.mesowest.org/tools/fbp/
